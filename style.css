@@ -1,0 +1,199 @@
+:root {
+    --veryDarkGrayishBlue: hsl(217, 19%, 35%);
+    --desaturatedDarkBlue: hsl(214, 17%, 51%);
+    --drayishBlue: hsl(212, 23%, 69%);
+    --lightGrayishBlue: hsl(210, 46%, 95%);
+    --white: hsl(0, 0%, 100%);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    color: var(--desaturatedDarkBlue);
+    font-family: "Manrope", sans-serif;
+    background-color: var(--lightGrayishBlue);
+}
+
+main {
+    display: flex;
+    height: 265px;
+
+    & > img {
+        border-radius: 10px 0 0 10px;
+    }
+
+    & > article {
+        padding: 30px;
+        width: 100%;
+        width: 410px;
+        display: grid;
+        gap: 20px;
+        background-color: var(--white);
+        border-radius: 0 10px 10px 0;
+
+        & > h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--veryDarkGrayishBlue);
+        }
+
+        & > p {
+            width: 100%;
+        }
+
+        & > .profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            & > img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+
+            & > .name > :first-child {
+                font-weight: 700;
+                color: var(--veryDarkGrayishBlue);
+            }
+
+            & > .share {
+                display: grid;
+                margin-left: auto;
+                height: fit-content;
+                position: relative;
+
+                & > .share-icon {
+                    width: 30px;
+                    height: 30px;
+                    display: grid;
+                    place-items: center;
+                    border-radius: 50%;
+                    background-color: var(--lightGrayishBlue);
+                    cursor: pointer;
+
+                    & > img {
+                        width: 10px;
+                        height: 10px;
+                    }
+                }
+
+                & > .socials {
+                    display: none;
+                    position: absolute;
+                    background-color: var(--veryDarkGrayishBlue);
+                    grid-auto-flow: column;
+                    gap: 15px;
+                    padding: 7px 20px;
+                    align-items: center;
+                    justify-self: center;
+                    border-radius: 5px;
+                    top: -50px;
+
+                    &.active {
+                        display: grid;
+                    }
+
+                    &::before {
+                        content: "";
+                        width: 16px;
+                        height: 16px;
+                        background-color: var(--veryDarkGrayishBlue);
+                        position: absolute;
+                        bottom: -8px;
+                        justify-self: center;
+                        transform: rotate(45deg);
+                    }
+
+                    & > p {
+                        letter-spacing: 4px;
+                        color: var(--drayishBlue);
+                    }
+
+                    & > img {
+                        width: 13px;
+                        height: 13px;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 850px) {
+    body {
+        display: block;
+        padding: 100px 20px 0 20px;
+    }
+
+    main {
+        display: grid;
+        max-width: 320px;
+        height: fit-content;
+
+        & > img {
+            width: 100%;
+            height: 250px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        & > article {
+            width: 100%;
+            padding: 20px;
+            border-radius: 0 0 10px 10px;
+
+            & > h1 {
+                font-size: 1.35rem;
+            }
+
+            & > .profile {
+                position: relative;
+
+                & > .share.shareSocials {
+                    display: flex;
+                    position: absolute;
+                    right: -20px;
+                    bottom: -20px;
+                    height: 65px;
+                    border-radius: 0 0 10px 10px;
+                    width: calc(100% + 40px);
+                    justify-content: space-around;
+                    align-items: center;
+                    padding-bottom: 15px;
+                    background-color: var(--veryDarkGrayishBlue);
+
+                    & > .share-icon {
+                        margin-left: 20px;
+                    }
+
+                    & > .socials {
+                        display: flex;
+                        position: unset;
+                        grid-auto-flow: column;
+                        gap: 25px;
+                        padding: 0;
+
+                        &::before {
+                            display: none;
+                        }
+
+                        & > img {
+                            width: 18px;
+                            height: 18px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
